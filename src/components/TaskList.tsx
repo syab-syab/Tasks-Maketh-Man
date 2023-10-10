@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+// import React, {useState} from 'react'
 import longSentenceCut from '../functions/longSentenceCut'
 import showDueDate from '../functions/showDueDate'
 import { Task } from '../types/All.types'
-import checkDueDate from '../functions/checkDueDate'
+// import checkDueDate from '../functions/checkDueDate'
 import { Button } from 'react-bootstrap';
-import Toast from 'react-bootstrap/Toast';
-import ToastContainer from 'react-bootstrap/ToastContainer';
+// import Toast from 'react-bootstrap/Toast';
+// import ToastContainer from 'react-bootstrap/ToastContainer';
 import Card from 'react-bootstrap/Card';
 // react-modalは使わない
 // 自力でモーダルを作れそう

@@ -1,13 +1,50 @@
 .App {
   text-align: center;
+  /* color: rgb(214, 180, 79); */
 }
 
+/* 文字色 */
+.green-text-color {
+  /* color: rgb(0, 175, 29); */
+  background-color: rgb(0, 175, 29);
+}
+
+.silver-text-color {
+  /* color: rgb(192, 192, 192); */
+  background-color: rgb(192, 192, 192);
+}
+
+.gold-text-color {
+  /* color: rgb(214, 180, 79); */
+  background-color: rgb(214, 180, 79);
+}
+
+/* Header */
+/* .header {
+
+} */
+
+.main-title {
+  /* color: rgb(230, 180, 34); */
+  /* color: rgb(214, 180, 79); */
+  font-family: Georgia, serif;
+}
+
+.sub-title {
+  /* color: rgb(214, 180, 79); */
+  letter-spacing: 0.2rem;
+}
+
+/* TaskList */
 .task-card {
   width: 25rem;
   margin: 0 1rem 1rem;
 }
 
 @media (max-width: 768px) {
+  .sub-title {
+    letter-spacing: 0.1rem;
+  }
   .task-card {
     width: 70%;
     margin: 0 auto 1;

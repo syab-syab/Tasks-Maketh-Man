@@ -143,7 +143,7 @@ const Home = () =>  {
     <div>
       <p>Home</p>
       <div>
-      <Button onClick={handleShow}>新しいタスク</Button>
+      <Button onClick={handleShow} variant="dark" className='mb-3'>New Task</Button>
         <SubmitForm
           inputValue={inputValue}
           dateTimeStates={[year, month, date, hour, minutes]}

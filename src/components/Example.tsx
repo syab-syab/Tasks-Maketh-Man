@@ -127,10 +127,9 @@ const Example = () => {
 
   return (
     <div>
-      <p>Example</p>
-      <p>使用例</p>
+      <h3>Example Of Use</h3>
       <div>
-        <Button onClick={handleShow}>新しいタスク</Button>
+        <Button onClick={handleShow} variant="dark" className='mb-3'>新しいタスク</Button>
         <SubmitForm
           inputValue={inputValue}
           dateTimeStates={[year, month, date, hour, minutes]}

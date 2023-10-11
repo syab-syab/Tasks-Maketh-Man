@@ -1,4 +1,5 @@
 // import React, {useState} from 'react'
+import { useLocation } from "react-router-dom"
 import longSentenceCut from '../functions/longSentenceCut'
 import showDueDate from '../functions/showDueDate'
 import { Task } from '../types/All.types'
@@ -21,6 +22,9 @@ type Props = {
 }
 
 const TaskList = (props: Props) => {
+  const location = useLocation();
+  console.log(location.pathname, location.pathname === "/")
+  console.log(location.pathname, location.pathname === "/example")
   // const [isOpen, setIsOpen] = useState(false)
 
   // const customStyles = {
@@ -35,6 +39,31 @@ const TaskList = (props: Props) => {
   //   },
   // }
 
+  // --------------------- 達成率 ------------------------------------------
+
+  // 達成率のキー
+  const accomplishedKey: string = 'accomplished-task'
+
+  // tasksに格納する用の変数
+  let accomplishedTasks: number = 0
+
+  // localStorageに何も入っていなければからの配列を格納しておく
+  if(!(localStorage.getItem(accomplishedKey))) {
+    localStorage.setItem(accomplishedKey, "")
+  } else {
+    const tmp: any = localStorage.getItem(accomplishedKey)
+    accomplishedTasks = Number(tmp)
+  }
+
+  const addAccomplished = (): void => {
+    const tmp: number = accomplishedTasks + 1
+    localStorage.setItem(accomplishedKey, String(tmp))
+  }
+
+  console.log("達成率", accomplishedTasks)
+
+  // --------------------- 達成率 end --------------------------------------
+
   const toggleModal = (val: Task) => {
     // setIsOpen(!isOpen);
     const result = window.confirm(`
@@ -47,6 +76,9 @@ const TaskList = (props: Props) => {
     if (result) {
       alert("達成できてえらい！")
       props.onClick(val.id)
+      if (location.pathname === "/") {
+        addAccomplished()
+      }
     } else {
       alert("引き続き頑張って！")
     }
@@ -75,9 +107,9 @@ const TaskList = (props: Props) => {
         ">
 
           <Card.Body>
-            <Card.Title className="me-auto">{task.content}</Card.Title>
+            <Card.Title className="me-auto">{longSentenceCut(10, task.content)}</Card.Title>
             {/* [ToDo]メモをポップオーバーにする */}
-            <Card.Text className="text-muted">メモ: {longSentenceCut(task.memo)}</Card.Text>
+            <Card.Text className="text-muted">メモ: {longSentenceCut(5, task.memo)}</Card.Text>
             <Button onClick={() => toggleModal(task)} variant="dark">詳細</Button>
           </Card.Body>
           {/* tsだと () => method の形にしないとエラーが出る */}

@@ -4,19 +4,23 @@
 }
 
 /* 文字色 */
-.green-text-color {
+.green-background {
   /* color: rgb(0, 175, 29); */
   background-color: rgb(0, 175, 29);
 }
 
-.silver-text-color {
+.silver-background {
   /* color: rgb(192, 192, 192); */
   background-color: rgb(192, 192, 192);
 }
 
-.gold-text-color {
+.gold-background {
   /* color: rgb(214, 180, 79); */
   background-color: rgb(214, 180, 79);
+}
+
+.default-background {
+  background-color: bisque;
 }
 
 /* Header */

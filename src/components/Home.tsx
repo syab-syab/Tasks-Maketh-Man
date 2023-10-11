@@ -133,17 +133,21 @@ const Home = () =>  {
 
   // --------------------- ここまで新タスク関係 end -------------------------
 
-    // --------------------- モーダル ----------------------------------------
-    const [show, setShow] = useState<boolean>(false);
+  // --------------------- モーダル ----------------------------------------
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [show, setShow] = useState<boolean>(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // --------------------- モーダル end ------------------------------------
+
+
 
   return (
     <div>
-      <p>Home</p>
       <div>
-      <Button onClick={handleShow} variant="dark" className='mb-3'>New Task</Button>
+      <Button onClick={handleShow} variant="dark" className='my-3'>New Task</Button>
         <SubmitForm
           inputValue={inputValue}
           dateTimeStates={[year, month, date, hour, minutes]}

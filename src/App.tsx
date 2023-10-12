@@ -41,6 +41,21 @@ function App() {
 
   console.log("達成率", accomplishedTasks)
 
+  const resetAccomplished = (): void => {
+    const result = window.confirm(
+      "達成数をリセットしますか？"
+    )
+    if (result) {
+      const tmp = 0
+      setAccomplished(tmp)
+      localStorage.setItem(accomplishedKey, String(tmp))
+      alert("リセットしました。")
+    } else {
+      alert("引き続き頑張って！")
+    }
+
+  }
+
   // --------------------- 達成率 end --------------------------------------
 
   // [ToDo]こなしたタスクの数によって色を変化させる
@@ -54,6 +69,7 @@ function App() {
           <Route path="/" element={
           <Home
             setAccomplished={addAccomplished}
+            resetAccomplished={resetAccomplished}
             // accomplished={accomplished}
           />} />
           {/* <Route path="/example" element={<Example tasks={modiTask} />} /> */}

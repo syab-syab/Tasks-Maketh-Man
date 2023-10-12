@@ -12,6 +12,7 @@ import { Button } from 'react-bootstrap';
 type Props = {
   // accomplished: number
   setAccomplished: () => void
+  resetAccomplished: () => void
 }
 
 const Home = (props: Props) =>  {
@@ -33,6 +34,7 @@ const Home = (props: Props) =>  {
 
   // タスクのstate
   const [tasks, setTasks] = useState<Array<Task> | Array<any>>(localTasks)
+
 
   // [ToDo] tasksをローカルストレージに保存できるようにする
   // tasksにローカルに保存されているtaskデータを格納する
@@ -94,6 +96,21 @@ const Home = (props: Props) =>  {
     localStorage.setItem(tasksKey, JSON.stringify(newTasks))
   }
 
+  
+  // タスクのリセット
+  const resetTasks = (): void => {
+    const result = window.confirm(
+      "タスクをリセットしますか？"
+    )
+    if (result) {
+      localStorage.setItem(tasksKey, "")
+      setTasks([])  
+      alert("リセットしました。")
+    } else {
+      alert("引き続き頑張って！")
+    }
+  }
+
   // 新しいTaskの登録
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -151,7 +168,7 @@ const Home = (props: Props) =>  {
   return (
     <div>
       <div>
-      <Button onClick={handleShow} variant="dark" className='my-3'>New Task</Button>
+        <Button onClick={handleShow} variant="dark" className='my-3'>New Task</Button>
         <SubmitForm
           inputValue={inputValue}
           dateTimeStates={[year, month, date, hour, minutes]}
@@ -164,6 +181,12 @@ const Home = (props: Props) =>  {
           onChangeMemo={(e) => inputMemoHandleChange(e)}
           onHide={handleClose}
         />
+      </div>
+      <div>
+        <Button onClick={resetTasks} variant="dark" className='mb-3' >Reset Task</Button>
+      </div>
+      <div>
+        <Button onClick={props.resetAccomplished} variant="dark" >Reset Achievement</Button>
       </div>
       {/* [ToDo] TaskListがちょっと不安なので色々試してみる */}
       {/* [ToDo] 不安なので↑の原形は消さない */}

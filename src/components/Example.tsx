@@ -80,6 +80,19 @@ const Example = () => {
     setTasks(newTasks)
   }
 
+    // タスクのリセット
+    const resetTasks = (): void => {
+      const result = window.confirm(
+        "タスクをリセットしますか？"
+      )
+      if (result) {
+        setTasks([])  
+        alert("リセットしました。")
+      } else {
+        alert("引き続き頑張って！")
+      }
+    }
+
   // 新しいTaskの登録
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -148,6 +161,9 @@ const Example = () => {
           onChangeMemo={(e) => inputMemoHandleChange(e)}
           onHide={handleClose}
         />
+        <div>
+          <Button onClick={resetTasks} variant="dark" className='mb-3' >Reset Task</Button>
+      </div>
       </div>
       {/* [ToDo] タスクをflex-boxで良い感じにして、レスポンシブ対応させる。画面を小さくしたら一列にすること */}
       {/* [ToDo] 余りに文が長ければ省略すること。省略した文は後述のポップアップ表示で全文表示させる */}

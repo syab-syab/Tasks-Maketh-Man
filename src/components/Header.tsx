@@ -26,8 +26,7 @@ const classToggle = (val: number): string => {
 const Header = (props: Props) => {
   return (
     <>
-
-    <header className={classToggle(props.accomplished)}>
+    <header id='header' className={classToggle(props.accomplished)}>
       {/* サイト名 */}
       <h1 className='main-title'>Tasks Maketh Man</h1>
       {/* サブタイトル */}

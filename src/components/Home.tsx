@@ -9,8 +9,12 @@ import SubmitForm from './SubmitForm';
 import TaskList from './TaskList';
 import { Button } from 'react-bootstrap';
 
+type Props = {
+  // accomplished: number
+  setAccomplished: () => void
+}
 
-const Home = () =>  {
+const Home = (props: Props) =>  {
 
   // taskのデータを格納するキー
   const tasksKey = "local-task"
@@ -166,9 +170,11 @@ const Home = () =>  {
       <TaskList
         tasks={tasks}
         onClick={handleDelete}
+        // accomplished={props.accomplished}
+        setAccomplished={props.setAccomplished}
       />
       <Link to="/example">
-        Example
+        使い方
       </Link>
     </div>
   )

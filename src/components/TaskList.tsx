@@ -19,6 +19,8 @@ type Props = {
   // int と boolean を渡す
   // onChange: (id: number, check: boolean) => void
   onClick: (id: number) => void
+  // accomplished: number
+  setAccomplished:  () => void
 }
 
 const TaskList = (props: Props) => {
@@ -41,26 +43,23 @@ const TaskList = (props: Props) => {
 
   // --------------------- 達成率 ------------------------------------------
 
-  // 達成率のキー
-  const accomplishedKey: string = 'accomplished-task'
+  // const accomplishedKey: string = 'accomplished-task'
 
-  // tasksに格納する用の変数
-  let accomplishedTasks: number = 0
+  // let accomplishedTasks: number = 0
 
-  // localStorageに何も入っていなければからの配列を格納しておく
-  if(!(localStorage.getItem(accomplishedKey))) {
-    localStorage.setItem(accomplishedKey, "")
-  } else {
-    const tmp: any = localStorage.getItem(accomplishedKey)
-    accomplishedTasks = Number(tmp)
-  }
+  // if(!(localStorage.getItem(accomplishedKey))) {
+  //   localStorage.setItem(accomplishedKey, "")
+  // } else {
+  //   const tmp: any = localStorage.getItem(accomplishedKey)
+  //   accomplishedTasks = Number(tmp)
+  // }
 
-  const addAccomplished = (): void => {
-    const tmp: number = accomplishedTasks + 1
-    localStorage.setItem(accomplishedKey, String(tmp))
-  }
+  // const addAccomplished = (): void => {
+  //   const tmp: number = accomplishedTasks + 1
+  //   localStorage.setItem(accomplishedKey, String(tmp))
+  // }
 
-  console.log("達成率", accomplishedTasks)
+  // console.log("達成率", accomplishedTasks)
 
   // --------------------- 達成率 end --------------------------------------
 
@@ -76,9 +75,8 @@ const TaskList = (props: Props) => {
     if (result) {
       alert("達成できてえらい！")
       props.onClick(val.id)
-      if (location.pathname === "/") {
-        addAccomplished()
-      }
+      props.setAccomplished()
+
     } else {
       alert("引き続き頑張って！")
     }

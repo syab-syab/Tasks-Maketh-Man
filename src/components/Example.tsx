@@ -124,6 +124,12 @@ const Example = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
+  // --------------------- モーダル end ------------------------------------
+
+  // --------------------- TaskListに渡すフェイク関数 ----------------------
+  const fakeAccomplished = () => alert("このようにしてタスクを達成済みにします。")
+
 
   return (
     <div>
@@ -166,9 +172,10 @@ const Example = () => {
       <TaskList
         tasks={tasks}
         onClick={handleDelete}
+        setAccomplished={fakeAccomplished}
       />
       <Link to='/'>
-        homeへ戻る
+        HOME
       </Link>
     </div>
   )

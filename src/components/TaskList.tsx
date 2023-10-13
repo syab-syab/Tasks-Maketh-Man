@@ -108,7 +108,7 @@ const TaskList = (props: Props) => {
             <Card.Title className="me-auto">{longSentenceCut(10, task.content)}</Card.Title>
             {/* [ToDo]メモをポップオーバーにする */}
             <Card.Text className="text-muted">メモ: {longSentenceCut(5, task.memo)}</Card.Text>
-            <Button onClick={() => toggleModal(task)} variant="dark">詳細</Button>
+            <Button onClick={() => toggleModal(task)} variant="dark">確認</Button>
           </Card.Body>
           {/* tsだと () => method の形にしないとエラーが出る */}
           <Card.Footer>期日: {showDueDate(task.dueDate)}</Card.Footer>

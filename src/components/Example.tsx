@@ -146,7 +146,7 @@ const Example = () => {
 
   return (
     <div>
-      <h3>Example Of Use</h3>
+      <h3 className='my-3'>サンプル</h3>
       <div>
         <Button onClick={handleShow} variant="dark" className='mb-3'>新しいタスク</Button>
         <SubmitForm

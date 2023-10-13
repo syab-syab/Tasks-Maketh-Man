@@ -24,9 +24,11 @@
 }
 
 /* Header */
-/* .header {
-
-} */
+.top-link {
+  text-decoration: none;
+  display: block;
+  color: black;
+}
 
 .main-title {
   /* color: rgb(230, 180, 34); */

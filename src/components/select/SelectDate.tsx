@@ -41,7 +41,7 @@ const SelectDate = (props: DateProps) => {
   const days = (): number[] => {
     let days = []
     const max: number = maxDay(props.year, props.month)
-    for (let i: number = 0; i < max; i++) {
+    for (let i: number = 1; i < max; i++) {
       days.push(i)
     }
     return days

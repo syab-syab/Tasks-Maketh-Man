@@ -97,7 +97,8 @@ const TaskList = (props: Props) => {
           d-inline-block
 
         ">
-
+          {/* [ToDo]なぜかメモが空欄だとcheckDueDateが機能しない */}
+          {/* 多分submitFormで問題が起きてる(多分、月か日) */}
           <Card.Body  style={{backgroundColor: checkDueDate(task.dueDate) ? "white" : "#ff0000ad"}}>
             <Card.Title className="me-auto">{longSentenceCut(10, task.content)}</Card.Title>
             {/* [ToDo]メモをポップオーバーにする */}

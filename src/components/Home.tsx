@@ -28,7 +28,7 @@ const Home = (props: Props) =>  {
   // tasksに格納する用の変数
   let localTasks: Array<Task> | Array<any> = []
 
-  // localStorageに何も入っていなければからの配列を格納しておく
+  // localStorageに何も入っていなければ空の配列を格納しておく
   if(!(localStorage.getItem(tasksKey))) {
     localStorage.setItem(tasksKey, "")
     localTasks = []
@@ -39,37 +39,6 @@ const Home = (props: Props) =>  {
 
   // タスクのstate
   const [tasks, setTasks] = useState<Array<Task> | Array<any>>(localTasks)
-
-
-  // [ToDo] tasksをローカルストレージに保存できるようにする
-  // tasksにローカルに保存されているtaskデータを格納する
-  // もしローカルになければどうするか？
-
-
-  // 期日を表示
-  // const dateAp = (unix: string): string => {
-  //   if (!unix) {
-  //     return "無し"
-  //   }
-  //   const tmp = Number(unix)
-  //   const date = new Date(tmp)
-  //   return `${date.getFullYear()}年 ${date.getMonth()}月 ${date.getDate()}日 ${date.getHours()}時 ${date.getMinutes()}分`
-  // }
-
-  // 期日を過ぎているかどうか
-  // const checkDueDate = (val: string): boolean => {
-  //   const tmp = Number(val)
-  //   const currentDateTime = new Date()
-  //   // 期日を過ぎていない or 設定されていないなら true を返す
-  //   if (tmp > currentDateTime.getTime() || val === "") {
-  //     return true
-  //   // 過ぎているなら false を返す
-  //   } else if (currentDateTime.getTime() >= tmp ) {
-  //     return false
-  //   } else {
-  //     return true
-  //   }
-  // }
 
 
   // --------------------- ここから期日関係 start --------------------- 
@@ -136,6 +105,7 @@ const Home = (props: Props) =>  {
     // このsetItemだけ特殊(スプレッド構文のせい)
     localStorage.setItem(tasksKey, JSON.stringify(tmpTasks))
     setInputValue("")
+    setInputMemo("")
     console.log(tasks)
 
 

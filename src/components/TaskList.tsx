@@ -100,7 +100,7 @@ const TaskList = (props: Props) => {
           {/* [ToDo]なぜかメモが空欄だとcheckDueDateが機能しない */}
           {/* 多分submitFormで問題が起きてる(多分、月か日) */}
           <Card.Body  style={{backgroundColor: checkDueDate(task.dueDate) ? "white" : "#ff0000ad"}}>
-            <Card.Title className="me-auto">{longSentenceCut(10, task.content)}</Card.Title>
+            <Card.Title className="me-auto">{longSentenceCut(10, task.content)}<span>{checkDueDate(task.dueDate) ? "true" : "false"}</span></Card.Title>
             {/* [ToDo]メモをポップオーバーにする */}
             <Card.Text className="text-muted"><CiMemoPad/>: {longSentenceCut(5, task.memo)}</Card.Text>
             <Button onClick={() => toggleModal(task)} variant="dark">Check</Button>

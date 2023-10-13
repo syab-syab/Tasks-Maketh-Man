@@ -8,10 +8,8 @@ import { Button } from 'react-bootstrap';
 // import Toast from 'react-bootstrap/Toast';
 // import ToastContainer from 'react-bootstrap/ToastContainer';
 import Card from 'react-bootstrap/Card';
-// react-modalは使わない
-// 自力でモーダルを作れそう
-// [ToDo]confirmで代用する
-
+import { BiAlarm } from "react-icons/bi";
+import { CiMemoPad } from "react-icons/ci";
 // ExampleとHomeから切り出したTaskのリスト
 
 type Props = {
@@ -27,19 +25,7 @@ const TaskList = (props: Props) => {
   const location = useLocation();
   console.log(location.pathname, location.pathname === "/")
   console.log(location.pathname, location.pathname === "/example")
-  // const [isOpen, setIsOpen] = useState(false)
 
-  // const customStyles = {
-  //   content: {
-  //     top: '50%',
-  //     left: '50%',
-  //     right: 'auto',
-  //     bottom: 'auto',
-  //     marginRight: '-50%',
-  //     transform: 'translate(-50%, -50%)',
-  //     padding: 0,
-  //   },
-  // }
 
   // --------------------- 達成率 ------------------------------------------
 
@@ -107,11 +93,11 @@ const TaskList = (props: Props) => {
           <Card.Body>
             <Card.Title className="me-auto">{longSentenceCut(10, task.content)}</Card.Title>
             {/* [ToDo]メモをポップオーバーにする */}
-            <Card.Text className="text-muted">メモ: {longSentenceCut(5, task.memo)}</Card.Text>
-            <Button onClick={() => toggleModal(task)} variant="dark">確認</Button>
+            <Card.Text className="text-muted"><CiMemoPad/>: {longSentenceCut(5, task.memo)}</Card.Text>
+            <Button onClick={() => toggleModal(task)} variant="dark">Check</Button>
           </Card.Body>
           {/* tsだと () => method の形にしないとエラーが出る */}
-          <Card.Footer>期日: {showDueDate(task.dueDate)}</Card.Footer>
+          <Card.Footer><BiAlarm />: {showDueDate(task.dueDate)}</Card.Footer>
         </Card>
         // </p>
         )

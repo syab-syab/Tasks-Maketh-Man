@@ -8,6 +8,10 @@ import SubmitForm from './SubmitForm';
 // import longSentenceCut from '../functions/longSentenceCut';
 import TaskList from './TaskList';
 import { Button } from 'react-bootstrap';
+import {AiOutlinePlus} from "react-icons/ai";
+import {MdOutlineLockReset} from "react-icons/md"
+import {LuTimerReset} from "react-icons/lu"
+import {BsPencilFill} from "react-icons/bs"
 
 type Props = {
   // accomplished: number
@@ -168,7 +172,7 @@ const Home = (props: Props) =>  {
   return (
     <div>
       <div>
-        <Button onClick={handleShow} variant="dark" className='my-3'>New Task</Button>
+        <Button onClick={handleShow} variant="dark" className='my-3'><AiOutlinePlus/>New Task</Button>
         <SubmitForm
           inputValue={inputValue}
           dateTimeStates={[year, month, date, hour, minutes]}
@@ -183,11 +187,11 @@ const Home = (props: Props) =>  {
         />
       </div>
       <div>
-        <Button onClick={resetTasks} variant="dark" className='mb-3' >Reset Task</Button>
+        <Button onClick={resetTasks} variant="dark" className='mb-3'><MdOutlineLockReset/>Reset Task</Button>
       </div>
-      <div>
+      {/* <div>
         <Button onClick={props.resetAccomplished} variant="dark" >Reset Achievement</Button>
-      </div>
+      </div> */}
       {/* [ToDo] TaskListがちょっと不安なので色々試してみる */}
       {/* [ToDo] 不安なので↑の原形は消さない */}
       <TaskList
@@ -196,9 +200,15 @@ const Home = (props: Props) =>  {
         // accomplished={props.accomplished}
         setAccomplished={props.setAccomplished}
       />
-      <Link to="/example">
-        使い方
-      </Link>
+      <div className='my-3'>
+        <Button onClick={props.resetAccomplished} variant="dark"><LuTimerReset/>Reset Achievement</Button>
+      </div>
+      <div className='mb-2'>
+        <Link to="/example" className='bottom-link'>
+          <Button variant="dark"><BsPencilFill/>Sample</Button>
+        </Link>
+      </div>
+
     </div>
   )
 }

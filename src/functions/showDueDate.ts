@@ -1,7 +1,7 @@
 // UNIX時間で渡された期日をわかるように表示
 const showDueDate = (unix: string): string => {
   if (!unix) {
-    return "無し"
+    return "None"
   }
   const tmp = Number(unix)
   const date = new Date(tmp)

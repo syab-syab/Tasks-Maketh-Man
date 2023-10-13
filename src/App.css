@@ -41,6 +41,15 @@
   letter-spacing: 0.2rem;
 }
 
+
+/* footer */
+.to-the-top {
+  position:fixed;
+  bottom:10px;
+  right:10px;
+}
+
+
 /* TaskList */
 .task-card {
   width: 25rem;

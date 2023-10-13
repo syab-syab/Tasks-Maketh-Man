@@ -46,9 +46,9 @@ function App() {
       "達成数をリセットしますか？"
     )
     if (result) {
-      const tmp = 0
-      setAccomplished(tmp)
-      localStorage.setItem(accomplishedKey, String(tmp))
+      localStorage.setItem(accomplishedKey, String(0))
+      setAccomplished(0)
+      
       alert("リセットしました。")
     } else {
       alert("引き続き頑張って！")

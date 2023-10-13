@@ -82,9 +82,12 @@ const SubmitForm = (props: SubmitProps) => {
               onClick={props.onHide}
             />
           </div>
-          <Button onClick={props.onHide}>
-            閉じる
-          </Button>
+          <div className='text-center'>
+            <Button onClick={props.onHide} variant='dark' className='mt-2'>
+              閉じる
+            </Button>
+          </div>
+
 
         </form>
       </Modal>

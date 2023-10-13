@@ -8,6 +8,9 @@ import SubmitForm from './SubmitForm';
 // import longSentenceCut from '../functions/longSentenceCut';
 import TaskList from './TaskList';
 import { Button } from 'react-bootstrap';
+import {AiOutlinePlus} from "react-icons/ai";
+import {MdOutlineLockReset} from "react-icons/md"
+import {AiOutlineHome} from "react-icons/ai"
 
 const Example = () => {
 
@@ -144,11 +147,12 @@ const Example = () => {
   const fakeAccomplished = () => alert("このようにしてタスクを達成済みにします。")
 
 
+
   return (
     <div>
-      <h3 className='my-3'>サンプル</h3>
+      <h3 className='my-3'>Sample</h3>
       <div>
-        <Button onClick={handleShow} variant="dark" className='mb-3'>新しいタスク</Button>
+        <Button onClick={handleShow} variant="dark" className='mb-3'><AiOutlinePlus/>New Task</Button>
         <SubmitForm
           inputValue={inputValue}
           dateTimeStates={[year, month, date, hour, minutes]}
@@ -162,7 +166,7 @@ const Example = () => {
           onHide={handleClose}
         />
         <div>
-          <Button onClick={resetTasks} variant="dark" className='mb-3' >Reset Task</Button>
+          <Button onClick={resetTasks} variant="dark" className='mb-3'><MdOutlineLockReset/>Reset Task</Button>
       </div>
       </div>
       {/* [ToDo] タスクをflex-boxで良い感じにして、レスポンシブ対応させる。画面を小さくしたら一列にすること */}
@@ -190,9 +194,14 @@ const Example = () => {
         onClick={handleDelete}
         setAccomplished={fakeAccomplished}
       />
-      <Link to='/'>
-        HOME
-      </Link>
+      <div className='mb-2'>
+        <Link to='/'>
+          <Button variant="dark">
+            <AiOutlineHome/>HOME
+          </Button>
+        </Link>        
+      </div>
+      {/* <a href="/">HOME</a> */}
     </div>
   )
 }

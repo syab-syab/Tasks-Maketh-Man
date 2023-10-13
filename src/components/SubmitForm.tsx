@@ -26,7 +26,7 @@ const SubmitForm = (props: SubmitProps) => {
         <form onSubmit={(e) => props.onSubmit(e)} className='p-3'>
           <div className='input-group mb-3'>
             <span className="input-group-text" id="task-name">
-              タスク名(必須)
+              タスク名
             </span>
             <input
               type="text"
@@ -35,13 +35,13 @@ const SubmitForm = (props: SubmitProps) => {
               id='flaotingTask'
               value={props.inputValue}
 
-              aria-label="タスク名(必須)"
+              aria-label="タスク名"
               aria-describedby="task-name"
               placeholder='タスク名'
             />
           </div>
           <div className="input-group mb-3">
-            <span className="input-group-text" id="memo">メモ(任意)</span>
+            <span className="input-group-text" id="memo">メモ</span>
             <input
               type="text"
               onChange={(e) => props.onChangeMemo(e)}
@@ -72,7 +72,7 @@ const SubmitForm = (props: SubmitProps) => {
             ]}
             onChange={props.onChangeDateTimeState}
           />
-
+          <span className='text-danger'>*全項目任意です。</span>
           <br />
           <div className="d-grid gap-2">
             <input

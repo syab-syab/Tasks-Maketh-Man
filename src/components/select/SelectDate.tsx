@@ -14,7 +14,7 @@ const SelectDate = (props: DateProps) => {
     const intY = Number(y)
     const intM = Number(m)
     // 31日間=32, 30日間=31, 28日間=29, 29日間=30
-    switch (intM) {
+    switch (intM+1) {
       case 1:
       case 3:
       case 5:

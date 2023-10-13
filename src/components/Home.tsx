@@ -3,18 +3,16 @@ import { Link } from "react-router-dom";
 import { Task } from '../types/All.types'
 import createUnixTime from '../functions/createUnixTime';
 import createDueTime from '../functions/createDueTime';
-// import testData from '../data/test-data.json'
 import SubmitForm from './SubmitForm';
-// import longSentenceCut from '../functions/longSentenceCut';
 import TaskList from './TaskList';
 import { Button } from 'react-bootstrap';
 import {AiOutlinePlus} from "react-icons/ai";
 import {MdOutlineLockReset} from "react-icons/md"
 import {LuTimerReset} from "react-icons/lu"
 import {BsPencilFill} from "react-icons/bs"
+import checkDueDate from "../functions/checkDueDate"
 
 type Props = {
-  // accomplished: number
   setAccomplished: () => void
   resetAccomplished: () => void
   reset: () => void
@@ -76,10 +74,15 @@ const Home = (props: Props) =>  {
     const result = window.confirm(
       "タスクをリセットしますか？"
     )
+    const tmp = tasks.find(t => checkDueDate(t.dueDate) === false)
     if (result) {
       localStorage.setItem(tasksKey, "")
       setTasks([])  
       alert("リセットしました。")
+      if (tmp) {
+        alert("期日を超過したタスクを検知しました。")
+        penaltyReset()
+      }
     } else {
       alert("引き続き頑張って！")
     }
@@ -168,15 +171,9 @@ const Home = (props: Props) =>  {
       <div>
         <Button onClick={resetTasks} variant="dark" className='mb-3'><MdOutlineLockReset/>Reset Task</Button>
       </div>
-      {/* <div>
-        <Button onClick={props.resetAccomplished} variant="dark" >Reset Achievement</Button>
-      </div> */}
-      {/* [ToDo] TaskListがちょっと不安なので色々試してみる */}
-      {/* [ToDo] 不安なので↑の原形は消さない */}
       <TaskList
         tasks={tasks}
         onClick={handleDelete}
-        // accomplished={props.accomplished}
         setAccomplished={props.setAccomplished}
         penalty={penaltyReset}
       />
@@ -188,7 +185,6 @@ const Home = (props: Props) =>  {
           <Button variant="dark"><BsPencilFill/>Sample</Button>
         </Link>
       </div>
-
     </div>
   )
 }

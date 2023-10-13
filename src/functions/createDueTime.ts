@@ -17,7 +17,7 @@ const createDueTime = (props: string[]): string => {
     const dateVal = createNumArray(props)
     const date = new Date(dateVal[0], dateVal[1], dateVal[2], dateVal[3], dateVal[4])
     const due = String(date.getTime())
-    console.log(due)
+    // console.log(due)
     return due
   } else {
     return ""

@@ -5,7 +5,6 @@ import createUnixTime from '../functions/createUnixTime';
 import createDueTime from '../functions/createDueTime';
 import testData from '../data/test-data.json'
 import SubmitForm from './SubmitForm';
-// import longSentenceCut from '../functions/longSentenceCut';
 import TaskList from './TaskList';
 import { Button } from 'react-bootstrap';
 import {AiOutlinePlus} from "react-icons/ai";
@@ -150,28 +149,8 @@ const Example = () => {
         />
         <div>
           <Button onClick={resetTasks} variant="dark" className='mb-3'><MdOutlineLockReset/>Reset Task</Button>
+        </div>
       </div>
-      </div>
-      {/* [ToDo] タスクをflex-boxで良い感じにして、レスポンシブ対応させる。画面を小さくしたら一列にすること */}
-      {/* [ToDo] 余りに文が長ければ省略すること。省略した文は後述のポップアップ表示で全文表示させる */}
-      {/* [ToDp] タスクをクリックしたらポップアップを表示する */}
-      {/* <div style={{textAlign: "center", margin: "auto"}} className='d-flex justify-content-center'>
-      {
-          tasks.map(task => {
-          return (
-          <p key={task.id} style={{borderBottom: task.dueDate ? "1rem solid green" : "", width: "auto", background: checkDueDate(task.dueDate) ? "rgba(255, 255, 128, .5)" : "gray"}}>
-            <input type="checkbox" onChange={() => handleCheck(task.id, task.check)} />
-              <span style={{textDecoration: task.check ? 'line-through' : 'none'}}>{task.content}</span>
-              <input type='button' value="del" onClick={() => handleDelete(task.id)} /><br />
-              <span>メモ: {longSentenceCut(task.memo)}</span><br />
-              <span>期日: {dateAp(task.dueDate)}</span>
-          </p>
-          )
-        })
-      }
-      </div> */}
-      {/* [ToDo] TaskListがちょっと不安なので色々試してみる */}
-      {/* [ToDo] 不安なので↑の原形は消さない */}
       <TaskList
         tasks={tasks}
         onClick={handleDelete}
@@ -185,7 +164,6 @@ const Example = () => {
           </Button>
         </Link>        
       </div>
-      {/* <a href="/">HOME</a> */}
     </div>
   )
 }

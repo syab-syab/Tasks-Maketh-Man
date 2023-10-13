@@ -5,7 +5,7 @@ const showDueDate = (unix: string): string => {
   }
   const tmp = Number(unix)
   const date = new Date(tmp)
-  return `${date.getFullYear()}年 ${date.getMonth()}月 ${date.getDate()}日 ${date.getHours()}時 ${date.getMinutes()}分`
+  return `${date.getFullYear()}年 ${date.getMonth() + 1}月 ${date.getDate()}日 ${date.getHours()}時 ${date.getMinutes()}分`
 }
 
 export default showDueDate

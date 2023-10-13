@@ -9,13 +9,10 @@ type Props = {
 // 緑 → 銀 → 金 の順で変わる
 // ローカルストレージのキーは 'accomplished-task'
 
-// 問題の箇所
-// [ToDo] ローカルの達成率が変わっても緑から変わらない問題を解決する
-//        ついでにリアルタイムで変化するよう修正する
 const classToggle = (val: number): string => {
-  if (val >= 3 ) {
+  if (val >=  20) {
     return "py-3 header gold-background"
-  } else if (val >= 2) {
+  } else if (val >= 10) {
     return "py-3 header silver-background"
   } else if (val >= 1) {
     return "py-3 header green-background"

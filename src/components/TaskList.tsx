@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"
 import longSentenceCut from '../functions/longSentenceCut'
 import showDueDate from '../functions/showDueDate'
 import { Task } from '../types/All.types'
-// import checkDueDate from '../functions/checkDueDate'
+import checkDueDate from '../functions/checkDueDate'
 import { Button } from 'react-bootstrap';
 // import Toast from 'react-bootstrap/Toast';
 // import ToastContainer from 'react-bootstrap/ToastContainer';
@@ -19,6 +19,7 @@ type Props = {
   onClick: (id: number) => void
   // accomplished: number
   setAccomplished:  () => void
+  penalty: () => void
 }
 
 const TaskList = (props: Props) => {
@@ -59,9 +60,16 @@ const TaskList = (props: Props) => {
         タスクを達成しましたか？
       `)
     if (result) {
-      alert("達成できてえらい！")
-      props.onClick(val.id)
-      props.setAccomplished()
+      if (!checkDueDate(val.dueDate)) {
+        alert("残念、期日を過ぎています。")
+        props.onClick(val.id)
+        props.penalty()
+      } else {
+        alert("達成できてえらい！")
+        props.onClick(val.id)
+        props.setAccomplished()
+      }
+
 
     } else {
       alert("引き続き頑張って！")
@@ -90,14 +98,14 @@ const TaskList = (props: Props) => {
 
         ">
 
-          <Card.Body>
+          <Card.Body  style={{backgroundColor: checkDueDate(task.dueDate) ? "white" : "#ff0000ad"}}>
             <Card.Title className="me-auto">{longSentenceCut(10, task.content)}</Card.Title>
             {/* [ToDo]メモをポップオーバーにする */}
             <Card.Text className="text-muted"><CiMemoPad/>: {longSentenceCut(5, task.memo)}</Card.Text>
             <Button onClick={() => toggleModal(task)} variant="dark">Check</Button>
           </Card.Body>
           {/* tsだと () => method の形にしないとエラーが出る */}
-          <Card.Footer><BiAlarm />: {showDueDate(task.dueDate)}</Card.Footer>
+          <Card.Footer style={{backgroundColor: task.dueDate ? "#bbbbbb" : "white"}}><BiAlarm />: {showDueDate(task.dueDate)}</Card.Footer>
         </Card>
         // </p>
         )

@@ -17,6 +17,7 @@ type Props = {
   // accomplished: number
   setAccomplished: () => void
   resetAccomplished: () => void
+  reset: () => void
 }
 
 const Home = (props: Props) =>  {
@@ -167,6 +168,14 @@ const Home = (props: Props) =>  {
 
   // --------------------- モーダル end ------------------------------------
 
+  // --------------------- 達成率リセット関係(ペナルティ) -------------------
+
+  const penaltyReset = (): void => {
+    alert("ペナルティとして達成率をリセットします。")
+    props.reset()
+  }
+
+  // --------------------- 達成率リセット関係(ペナルティ) end ---------------
 
 
   return (
@@ -199,6 +208,7 @@ const Home = (props: Props) =>  {
         onClick={handleDelete}
         // accomplished={props.accomplished}
         setAccomplished={props.setAccomplished}
+        penalty={penaltyReset}
       />
       <div className='my-3'>
         <Button onClick={props.resetAccomplished} variant="dark"><LuTimerReset/>Reset Achievement</Button>

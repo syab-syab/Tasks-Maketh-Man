@@ -41,19 +41,21 @@ function App() {
 
   console.log("達成率", accomplishedTasks)
 
+  const reset = (): void => {
+    localStorage.setItem(accomplishedKey, String(0))
+    setAccomplished(0)
+  }
+
   const resetAccomplished = (): void => {
     const result = window.confirm(
       "達成数をリセットしますか？"
     )
     if (result) {
-      localStorage.setItem(accomplishedKey, String(0))
-      setAccomplished(0)
-      
+      reset()
       alert("リセットしました。")
     } else {
       alert("引き続き頑張って！")
     }
-
   }
 
   // --------------------- 達成率 end --------------------------------------
@@ -70,6 +72,7 @@ function App() {
           <Home
             setAccomplished={addAccomplished}
             resetAccomplished={resetAccomplished}
+            reset={reset}
             // accomplished={accomplished}
           />} />
           {/* <Route path="/example" element={<Example tasks={modiTask} />} /> */}

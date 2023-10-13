@@ -91,6 +91,7 @@ const Example = () => {
       if (result) {
         setTasks([])  
         alert("リセットしました。")
+        alert("このようにして全タスクを消去できます。\n再読み込みすれば元に戻ります。")
       } else {
         alert("引き続き頑張って！")
       }
@@ -146,7 +147,13 @@ const Example = () => {
   // --------------------- TaskListに渡すフェイク関数 ----------------------
   const fakeAccomplished = () => alert("このようにしてタスクを達成済みにします。")
 
+  // --------------------- 達成率リセット関係(ペナルティ) -------------------
+  
+  const fakePenaltyReset = (): void => {
+    alert("期限を過ぎると達成率がリセットされるのでご注意ください。")
+  }
 
+  // --------------------- 達成率リセット関係(ペナルティ) end ---------------
 
   return (
     <div>
@@ -193,6 +200,7 @@ const Example = () => {
         tasks={tasks}
         onClick={handleDelete}
         setAccomplished={fakeAccomplished}
+        penalty={fakePenaltyReset}
       />
       <div className='mb-2'>
         <Link to='/'>

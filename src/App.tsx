@@ -39,7 +39,7 @@ function App() {
     localStorage.setItem(accomplishedKey, String(tmp))
   }
 
-  console.log("達成率", accomplishedTasks)
+  // console.log("達成率", accomplishedTasks)
 
   const reset = (): void => {
     localStorage.setItem(accomplishedKey, String(0))
